@@ -1,0 +1,57 @@
+.Auth{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.Login{
+    height: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form{
+    height: 100%;
+    width: 100%;
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#new-account-name, #new-password{
+    width: 100%;
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+#new-password {
+    display: flex;
+    flex-direction: column;
+}
+#new-password input{
+    margin-top: 10px ;
+}
+input{
+    padding:10px;
+    border:0;
+    border-radius:10px;
+}
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+

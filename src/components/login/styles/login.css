@@ -1,0 +1,87 @@
+.Auth{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.Login{
+    height: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form{
+    height: 100%;
+    width: 100%;
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#account-name, #password{
+    width: 100%;
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+input{
+    padding:10px;
+    border:0;
+    border-radius:10px;
+}
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.effect {
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    text-transform: capitalize;
+    /* background-color: - add your own background-color */
+    padding: 20px 0px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.effect-3 {
+    transition: all 0.2s linear 0s;
+}
+/*.effect-3:before {*/
+/*     content: "\f178";*/
+/*     font-family: FontAwesome;*/
+/*     position: absolute;*/
+/*     display: flex;*/
+/*     align-items: center;*/
+/*     justify-content: center;*/
+/*     position: absolute;*/
+/*     top: 100%;*/
+/*     left: 0px;*/
+/*     width: 100%;*/
+/*     height: 100%;*/
+/*     text-align: center;*/
+/*     font-size: 30px;*/
+/*     transition: all 0.2s linear 0s;*/
+/* }*/
+.effect-3:hover {
+    /*text-indent: -9999px;*/
+    color: aquamarine;
+}
+/*.effect-3:hover:before {*/
+/*    top: 0;*/
+/*    text-indent: 0;*/
+/*}*/
