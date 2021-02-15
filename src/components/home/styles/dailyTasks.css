@@ -1,0 +1,16 @@
+.DailyTasks{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    border-bottom: 1px solid #727274;
+}
+
+.DailyTasks button{
+    margin: 5px;
+    border-radius: 10px;
+    height: 50px;
+    transition: 0.5s;
+
+}
+.DailyTasks button:hover{
+    background-color: #763626;
+}

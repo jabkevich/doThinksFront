@@ -1,17 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App.js";
-// import {compose, createStore} from "redux";
-// import {rootReducer} from "./redux/rootReducer";
-// import {Provider} from 'react-redux'
+import {Provider} from 'react-redux'
+import store from "./redux/store"
+import "./styles/App.css"
+const app = (
+    <Provider store={store}>
+        <App/>
+    </Provider>
+)
 
-// const store = createStore(rootReducer, compose(
-//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// ))
-// const a = (
-//     <Provider store={store}>
-//         <App/>
-//     </Provider>
-// )
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(app, document.getElementById("root"));
