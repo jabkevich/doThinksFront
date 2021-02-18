@@ -8,7 +8,15 @@ import {
     USER_LOADING,
     DELETE_GROUP,
     OPEN_GROUP,
-    UPDATE_TASK
+    UPDATE_TASK,
+    ADD_TASK,
+    DEL_TASK,
+    UPDATE_TASK_LIST,
+    GET_POINT_LIST,
+    UPDATE_POINT_LIST,
+    UPDATE_POINT,
+    ADD_POINT,
+    DEL_POINT
 } from "./types";
 import axios from "axios";
 
@@ -102,18 +110,118 @@ export const delGroup = (id) => (dispatch) =>{
 
 
 export const openGroup = (id) => (dispatch) =>{
-    dispatch({
-        type: OPEN_GROUP,
-        payload: id
+        axios.get(URL + `/api/task/?group=${id}`)
+            .then(res => {
+                dispatch({
+                    type: OPEN_GROUP,
+                    payload: {tasks: res.data, id}
+
+                })
+            }).catch(err => console.log(err))
+}
+export const addTask = (data, id, group) => (dispatch) => {
+    axios.post('http://127.0.0.1:8000/api/task/', {
+        title: data["title"],
+        deadline: data["deadline"]|| null,
+        other: data["other"] || null,
+        text: null,
+        priority: 0,
+        owner: id,
+        group: group
     })
+        .then(res => {
+            dispatch({
+                type: ADD_TASK,
+                payload: res.data
+            })
+        }).catch(err => console.log(err))
+}
+export const delTask = (id) => (dispatch) => {
+    axios.delete(`http://127.0.0.1:8000/api/task/${id}`)
+        .then(res => {
+            dispatch({
+                type: DEL_TASK,
+                payload: id
+            })
+        }).catch(err => console.log(err))
 }
 
-export const updateTask = (Title,  Deadline, Other, Text, Priority, Owner, Group, id) => (dispatch) => {
-    const value = {Title,  Deadline, Other, Text, Priority, Owner, Group}
-    axios.put(`http://127.0.0.1:8000/api/group/${id}/`, value).then(res => {
+export const updateTask = (task, id) => (dispatch) => {
+    const value = {
+        title: task["title"],
+        deadline:task["deadline"],
+        other:task["other"] ,
+        text:task["text"]||null ,
+        priority:task["priority"],
+        owner:task["owner"],
+        group:task["group"],
+    }
+    axios.put(`http://127.0.0.1:8000/api/task/${id}/`, value).then(res => {
         dispatch({
             type: UPDATE_TASK,
-            payload: value
+            payload: res.data
         })
     }).catch(err => {console.log(err)})
+}
+export const updateTaskList = (oldIndex, newIndex ) =>(dispatch) =>{
+    dispatch({
+        type: UPDATE_TASK_LIST,
+        payload: {oldIndex, newIndex}
+    })
+}
+export const getPointList = (taskFather) =>(dispatch) =>{
+    axios.get(URL + `/api/point/?taskFather=${taskFather}`)
+        .then(res => {
+            dispatch({
+                type: GET_POINT_LIST,
+                payload: res.data
+
+            })
+        }).catch(err => console.log(err))
+}
+export const updatePointList = (oldIndex, newIndex ) =>(dispatch) =>{
+    dispatch({
+        type: UPDATE_POINT_LIST,
+        payload: {oldIndex, newIndex}
+    })
+}
+export const updatePoint = (point) =>(dispatch) =>{
+    const value = {
+        title: point["title"],
+        text: point["text"],
+        priority: point["priority"],
+        taskFather: point["taskFather"]
+    }
+    console.log(value)
+    axios.put(`http://127.0.0.1:8000/api/point/${point["id"]}/`, value).then(res => {
+        dispatch({
+            type: UPDATE_POINT,
+            payload: res.data
+        })
+    }).catch(err => {console.log(err)})
+
+}
+export const addPoint = (data, id) => (dispatch) => {
+    axios.post('http://127.0.0.1:8000/api/point/', {
+        "title": data["title"],
+        "text": data["text"],
+        "priority": 0,
+        "taskFather": id
+    })
+        .then(res => {
+            dispatch({
+                type: ADD_POINT,
+                payload: res.data
+            })
+        }).catch(err => console.log(err))
+}
+export const delPoint = (id) => (dispatch) => {
+    console.log(id)
+    axios.delete(`http://127.0.0.1:8000/api/point/${id}`)
+        .then(res => {
+            dispatch({
+                type: DEL_POINT,
+                payload: id
+            })
+        }).catch(err => console.log(err))
 }

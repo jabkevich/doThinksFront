@@ -19,7 +19,6 @@ const PrivateRoute = (auth) => (
     />
 )
 const mapStateToProps = state => {
-
     return {
         isAuthenticated: state.auth.isAuthenticated,
         loading: state.auth.loading,

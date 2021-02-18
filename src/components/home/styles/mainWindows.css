@@ -7,39 +7,4 @@
     align-content: flex-start;
     overflow-y: scroll;
 }
-.button{
-    background-color: #2A3132;
-    height: 200px;
-    width: 200px;
-    margin: 10px;
-    border-radius: 20px;
-    opacity: 0;
-    animation: card 2s forwards;
-}
-@keyframes card{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-.tasks{
-    background-color: #336B87;
-    height: 200px;
-    width: 200px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-}
 
-
-
-.title{
-    text-align: center;
-}
-
-.deploy{
-    height: 60vh;
-    width: 100%;
-}
