@@ -1,0 +1,158 @@
+/* Large desktops and laptops */
+@font-face {
+
+  font-family: 'Quicksand-Regular';
+  src: url('fonts/Quic/Quicksand-Regular.ttf');
+}
+
+
+@media (min-width: 1200px) {
+
+  .Content {
+    font-family: 'Quicksand-Regular', sans-serif;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center ;
+  }
+  .Header{
+    width: 100%;
+    height: 80px;
+    background: #60a29b;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    box-shadow: 0 1px 2px 0px  #cfcfcf;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    .HeaderContent{
+      width: 80%;
+      height: 80%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center ;
+      .Logo{
+        font-size: 2em;
+        color: white;
+      }
+      .LAN{
+
+      }
+    }
+  }
+  .Footer{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    .FooterContent{
+      width: 80%;
+      height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center ;
+      .Logo{
+        font-size: 1em;
+      }
+    }
+
+  }
+  .Login {
+    height: 50%;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+
+    .logIN {
+      font-size: 2em;
+      text-align: center;
+    }
+
+
+    .Form {
+      display: flex;
+      flex-direction: column;
+
+      .Input {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .btn {
+          display: inline-block;
+          box-sizing: border-box;
+          padding: 0 24px;
+          outline: none;
+          border: none;
+          border-radius: 3px;
+          font-family: 'Quicksand-Regular', sans-serif;
+          //font-size: 14px;
+
+          //font-weight: normal;
+          text-decoration: none;
+          color: black;
+          background-color: #fff;
+          cursor: pointer;
+          user-select: none;
+          appearance: none;
+          //box-shadow: 1px 1px 3px 1px  #cfcfcf, 1px 1px 3px 1px  #cfcfcf;
+          box-shadow: 0 1px 2px 1px  #cfcfcf, 0px 0px 0px 0  #cfcfcf;
+          touch-action: manipulation;
+          transition: .5s;
+          //transition: box-shadow .18s ease-out,background .18s ease-out,color .18s ease-out;
+        }
+        .btn:focus-visible {
+          box-shadow: 0 0 0 3px lightskyblue;
+        }
+        .btn:hover {
+          box-shadow: 0 5px 5px 0  #cfcfcf, 0 6px 9px 0  #cfcfcf;
+        }
+        .btn:active {
+          background-color: #efefef !important;
+        }
+        .btn:disabled {
+          background-color: #eee;
+          color: #444;
+          pointer-events: none;
+        }
+      }
+    }
+
+    .NoAck {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      label{
+        margin-right: 5px;
+      }
+      a{
+        font-family: 'Quicksand-Regular', sans-serif;
+        font-weight: bold;
+        //text-shadow: #cfcfcf 2px 1px 0
+      }
+
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

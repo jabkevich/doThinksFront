@@ -1,0 +1,74 @@
+.Remember {
+  border-radius: 0.25em;
+  .customCheckbox[type=checkbox] {
+    opacity: 0;
+    display: none;
+
+  }
+
+  /* для элемента label, связанного с .custom-checkbox */
+
+  .customCheckbox[type=checkbox] + label {
+    transition: .5s;
+    text-align: center;
+    display:inline-block;
+    cursor: pointer;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #333;
+    padding: 5px 15px;
+    box-shadow: 0 2px 2px 0  #cfcfcf, 2px 2px 2px 0  #cfcfcf;
+    border-radius: 0.25em;
+  }
+  /* создание в label псевдоэлемента before со следующими стилями */
+  .customCheckbox+label::before {
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    transition-duration: .5s;
+    align-items: center;
+    user-select: none;
+    text-align: center;
+
+  }
+
+  /* стили при наведении курсора на checkbox */
+  .customCheckbox:not(:disabled):not(:checked)+label:hover {
+    border-color: #b3d7ff;
+  }
+
+  /* стили для активного чекбокса (при нажатии на него) */
+  .customCheckbox:not(:disabled):active+label {
+    box-shadow: 0 5px 5px 0  #cfcfcf, 0 6px 9px 0  #cfcfcf;
+  }
+
+  /* стили для чекбокса, находящегося в фокусе */
+  .customCheckbox:hover+label {
+    box-shadow: 0 5px 5px 0  #cfcfcf, 0 6px 9px 0  #cfcfcf;
+  }
+
+  /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+  .customCheckbox:focus:not(:checked)+label {
+    box-shadow: 0 5px 5px 0  #cfcfcf, 0 6px 9px 0  #cfcfcf;
+  }
+
+  /* стили для чекбокса, находящегося в состоянии checked */
+  .customCheckbox:checked+label {
+    border-radius: 0.25em;
+    border-color: aquamarine;;
+    background-color: aquamarine;
+    align-items: center;
+    user-select: none;
+    text-align: center;
+  }
+
+  /* стили для чекбокса, находящегося в состоянии disabled */
+  .customCheckbox:disabled+label::before {
+    background-color: #e9ecef;
+  }
+}
