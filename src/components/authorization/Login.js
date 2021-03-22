@@ -1,11 +1,12 @@
-import React, {Component, Fragment} from 'react'
-import styles from "./styles/login/desktops_.module.scss"
-import remember from "./remember/remember.scss"
+import React, {Component, Fragment} from 'react';
+ import styles from "./styles/login/desktops_.module.scss";
+// import styles from "./styles/login/phones_.modules.scss";
+import remember from "./remember/remember.scss";
 import {Link, Redirect, Route} from "react-router-dom";
-import Input from "./input/Input"
-import BorderSelect from "./Lang/Switch2"
-import BannerCheckboxStyle from "./checkBox/CheckBox"
+import Input from "./input/Input";
 import NeonCheckboxStyle from "./checkBox/CheckBox";
+import SwitchLen from "./Lang/SwitchLen";
+
 class Login extends Component {
     state = {
         username: null,
@@ -13,17 +14,12 @@ class Login extends Component {
     }
     updateUsername = (value) => {
         this.state.username = value
-        console.log("this.state.username")
-        console.log(this.state.username)
     }
     updatePassword = (value) => {
         this.state.password = value
-        console.log("this.state.password")
-        console.log(this.state.password)
     }
 
     render() {
-
         return (
             <Fragment>
                 <div className={styles.Content}>
@@ -32,7 +28,7 @@ class Login extends Component {
                             <div className={styles.Logo}>
                                 doThinks
                             </div>
-                            <BorderSelect/>
+                            <SwitchLen/>
                         </div>
                     </div>
                     <div className={styles.Login}>
@@ -40,23 +36,25 @@ class Login extends Component {
                             Log in
                         </div>
                         <form className={styles.Form}>
-                            <Input text={"Your login"} marginTo={"0px"} updateData={this.updateUsername}/>
-                            <Input text={"Your password"} marginTo={"10px"} updateData={this.updatePassword}/>
-                            <div className={styles.Input}>
-                                {/*<div className={remember.Remember}>*/}
-                                {/*    <input  type="checkbox" value="indigo" className={remember.customCheckbox}  id="color-1"/>*/}
-                                {/*    <label htmlFor ="color-1">Remember me</label>*/}
-                                {/*</div>*/}
-                                <div className={remember.Remember}>
+                            <Input text={"Your login"} marginTo={"0px"} updateData={this.updateUsername} type={"text"}/>
+                            <Input text={"Your password"} marginTo={"10px"} updateData={this.updatePassword} type={"password"}/>
+                            <div className={styles.Remember}>
+                                <div className={remember.RememberMe}>
                                     <NeonCheckboxStyle/>
                                 </div>
-
+                                <div className={styles.dontRemember}>
+                                    <Link to={"/register"} className={"effect effect-3"}>forgot password?</Link>
+                                </div>
+                            </div>
+                            <div className={styles.LogIn}>
                                 <button type="submit" className={styles.btn}>Log in</button>
                             </div>
                         </form>
                         <div className={styles.NoAck}>
-                            <label>Don't have an account yet?</label><Link to={"/register"} className={"effect effect-3"}>Apply</Link>
+                            <label>Don't have an account yet?</label><Link to={"/register"}
+                                                                           className={"effect effect-3"}>Apply</Link>
                         </div>
+
                     </div>
                     <div className={styles.Footer}>
                         <div className={styles.FooterContent}>
@@ -70,7 +68,6 @@ class Login extends Component {
         )
     }
 }
-
 
 
 export default Login

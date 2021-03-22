@@ -40,6 +40,24 @@
     transform-origin: 0 0;
     outline:none;
     background: white;
+    transition: transform 120ms ease-in;
+    font-family: 'Quicksand-Regular', sans-serif;
+    line-height: 1.2;
+  }
+  &__label2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * .5);
+    margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * .5);
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    outline:none;
+    background: white;
 
     transition: transform 120ms ease-in;
     font-family: 'Quicksand-Regular', sans-serif;
