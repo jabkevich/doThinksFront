@@ -1,12 +1,13 @@
 import React, {Component, Fragment} from 'react';
-//import styles from "./styles/login/desktops_.module.scss";
-//import styles from "./styles/login/phones_.modules.scss";
 import styles from "./styles/login/styles.scss"
 import remember from "./styles/login/remember/remember.scss";
 import {Link, Redirect, Route} from "react-router-dom";
 import Input from "./styles/input/Input";
 import NeonCheckboxStyle from "./styles/checkBox/CheckBox";
 import SwitchLen from "./styles/Lang/SwitchLen";
+import {connect} from 'react-redux'
+import PropTypes from "prop-types";
+import {login} from '../../redux/auth/authActions'
 
 class Login extends Component {
     state = {
@@ -20,7 +21,15 @@ class Login extends Component {
         this.state.password = value
     }
 
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.login(this.state.username, this.state.password)
+    };
+
     render() {
+        if (this.props.userLoading) {
+            return <Redirect to='/'/>
+        }
         return (
             <Fragment>
                 <div className={styles.Content}>
@@ -43,7 +52,7 @@ class Login extends Component {
                             <div className={styles.logIN}>
                                 Log in
                             </div>
-                            <form className={styles.Form}>
+                            <form className={styles.Form} onSubmit={this.handleSubmit}>
                                 <Input text={"Your login"} marginTo={"0px"} updateData={this.updateUsername} type={"text"}/>
                                 <Input text={"Your password"} marginTo={"30px"} updateData={this.updatePassword} type={"password"}/>
                                 <div className={styles.Remember}>
@@ -75,6 +84,10 @@ class Login extends Component {
         )
     }
 }
+const mapStateToProps = state =>{
+    return{
+        userLoading: state.auth.userLoading
+    }
+}
 
-
-export default Login
+export default connect(mapStateToProps, {login})(Login)

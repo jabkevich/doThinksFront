@@ -5,7 +5,9 @@ import {Link, Redirect, Route} from "react-router-dom";
 import Input from "./styles/input/Input";
 import NeonCheckboxStyle from "./styles/checkBox/CheckBox";
 import SwitchLen from "./styles/Lang/SwitchLen";
-
+import {connect} from 'react-redux'
+import PropTypes from "prop-types";
+import {login, register} from '../../redux/auth/authActions'
 
 class Register extends Component {
     state = {
@@ -23,7 +25,16 @@ class Register extends Component {
         this.state.password = value
     }
 
+
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.register(this.state.username, this.state.password)
+    };
+
     render() {
+        if (this.props.userLoading) {
+            return <Redirect to='/'/>
+        }
         return (
             <Fragment>
                 <div className={styles.Content}>
@@ -46,7 +57,7 @@ class Register extends Component {
                             <div className={styles.logIN}>
                                 Sign up
                             </div>
-                            <form className={styles.Form}>
+                            <form className={styles.Form} onSubmit={this.handleSubmit}>
                                 <Input text={"Your login"} marginTo={"0px"} updateData={this.updateUsername} type={"text"}/>
                                 <Input text={"Create a password"} marginTo={"30px"} updateData={this.updatePassword} type={"password"}/>
                                 <Input text={"Repeat a password"} marginTo={"30px"} updateData={this.updatePassword} type={"password"}/>
@@ -78,7 +89,12 @@ class Register extends Component {
 }
 
 
+const mapStateToProps = state =>{
+    return{
+        userLoading: state.auth.userLoading
+    }
+}
 
-export default Register
+export default connect(mapStateToProps, {register})(Register)
 
 
