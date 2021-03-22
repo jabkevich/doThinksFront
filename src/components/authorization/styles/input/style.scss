@@ -23,16 +23,16 @@
 
 
 .input {
+  font-size: 2.5em;
   position: relative;
   box-shadow: inset 1px 1px 1px 1px  #cfcfcf, inset 0px 1px 1px 0px #cfcfcf, inset 0px 1px 1px 0px #cfcfcf;
-  //box-shadow: inset -1px -1px 1px 1px  #cfcfcf;
-  //, inset 0px -1px 1px 0px #cfcfcf, inset 0px -1px 1px 0px #cfcfcf;
   border-radius: var(--size-radius);
   outline:none;
+  height: 80px;
   &__label {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 5px;
+    top: 5px;
     padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * .5);
     margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * .5);
     white-space: nowrap;
@@ -46,8 +46,8 @@
   }
   &__label2 {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 5px;
+    top: 5px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -56,19 +56,19 @@
     white-space: nowrap;
     transform: translate(0, 0);
     transform-origin: 0 0;
-    outline:none;
     background: white;
-
     transition: transform 120ms ease-in;
     font-family: 'Quicksand-Regular', sans-serif;
     line-height: 1.2;
   }
   &__field {
+    font-size: 1em;
     box-sizing: border-box;
     display: block;
     width: 100%;
     border: 3px solid transparent;
-    padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
+    //padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
+    padding-top: 15px;
     color: currentColor;
     background: transparent;
     border-radius: var(--size-radius);
@@ -76,6 +76,7 @@
     &:focus,
     &:not(:placeholder-shown) {
       & + .input__label {
+
         box-shadow: inset 0px 2px 2px 0px  #cfcfcf, inset 0px 0px 0px 0px #cfcfcf;
         border-radius: var(--size-radius);
         padding: calc(var(--size-bezel) * 0.1) calc(var(--size-bezel) * .5);
@@ -84,4 +85,17 @@
       }
     }
   }
+}
+
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+  .input {
+    &__field {
+      font-size: 1.5em;
+    }
+  }
+
 }

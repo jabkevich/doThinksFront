@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import styles from "./styles.scss"
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,7 +11,7 @@ const BootstrapInput = withStyles((theme) => ({
     input: {
         borderRadius: 4,
         position: 'relative',
-        fontSize: 16,
+        fontSize: "4em",
         padding: '10px 26px 10px 12px',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
         color: "white",
@@ -50,7 +50,7 @@ const SwitchLen = () => {
                 color: "white"
             },
             "& li": {
-                fontSize: 12,
+                fontSize: "3em",
                 color: "white",
                 background: "#60a29b"
             },
@@ -85,8 +85,8 @@ const SwitchLen = () => {
 
 
     return (
-        <FormControl>
-            <Select
+        <FormControl >
+            <Select className={styles.LEN}
                 classes={{root: minimalSelectClasses.select}}
                 MenuProps={menuProps}
                 IconComponent={iconComponent}

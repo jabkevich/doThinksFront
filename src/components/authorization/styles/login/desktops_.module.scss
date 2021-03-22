@@ -5,7 +5,7 @@
 }
 
 
-@media (min-width: 1200px) {
+@media (min-width: 900px) {
   .Content {
     font-family: 'Quicksand-Regular', sans-serif;
     height: 100%;
@@ -58,93 +58,114 @@
     }
 
   }
-  .Login {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    height: 60%;
-    width: 500px;
+  .MID{
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    justify-content: space-around;
+    flex-direction: row;
+    height: 60%;
+    width: 100%;
 
-
-    .logIN {
-      font-size: 2em;
-      text-align: center;
-    }
-
-
-    .Form {
+    .INFO{
       display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 40%;
+      div:first-child{
+        font-size: 4em;
+      }
+      div:nth-child(2n){
+        margin-top: 10px ;
+        font-size: 1.5em;
+      }
+
+    }
+    .Login {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      height: 100%;
+      width: 500px;
+      display: flex;
+      justify-content: space-between;
       flex-direction: column;
 
-      .Remember {
-        margin-top: 10px;
+
+      .logIN {
+        font-size: 2em;
+        text-align: center;
+      }
+
+
+      .Form {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        .dontRemember{
+        flex-direction: column;
+
+        .Remember {
+          margin-top: 10px;
           display: flex;
-          justify-content: center;
+          flex-direction: row;
+          justify-content: space-between;
+          .dontRemember{
+            display: flex;
+            justify-content: center;
+            align-items: center ;
+            a{
+              margin-top: 2px;
+              transition: .5s;
+            }
+          }
+          .dontRemember a:hover{
+            color: aquamarine;
+          }
+
+        }
+        .LogIn{
+          display: flex;
+          justify-content: flex-end;
           align-items: center ;
-          a{
-            margin-top: 2px;
+
+          .btn {
+            display: inline-block;
+            box-sizing: border-box;
+            padding: 0 24px;
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            font-family: 'Quicksand-Regular', sans-serif;
+            height: 50px;
+            width: 100%;
+            //font-size: 14px;
+
+            //font-weight: normal;
+            text-decoration: none;
+            color: white;
+            background: #212121;
+            font-size: 2em;
+            cursor: pointer;
+            user-select: none;
+            appearance: none;
+            //box-shadow: 1px 1px 3px 1px  #cfcfcf, 1px 1px 3px 1px  #cfcfcf;
+            box-shadow: 0 1px 2px 1px  #cfcfcf, 0px 0px 0px 0  #cfcfcf;
+            touch-action: manipulation;
             transition: .5s;
+            //transition: box-shadow .18s ease-out,background .18s ease-out,color .18s ease-out;
+          }
+          .btn:focus-visible {
+            box-shadow: 0 0 0 3px lightskyblue;
+          }
+          .btn:hover {
+            box-shadow: 0 5px 5px 0  #cfcfcf, 0 6px 9px 0  #cfcfcf;
+          }
+          .btn:active {
+            background-color: #efefef !important;
+          }
+          .btn:disabled {
+            background-color: #eee;
+            color: #444;
+            pointer-events: none;
           }
         }
-        .dontRemember a:hover{
-         color: aquamarine;
-        }
-
       }
-      .LogIn{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center ;
-
-        .btn {
-          display: inline-block;
-          box-sizing: border-box;
-          padding: 0 24px;
-          outline: none;
-          border: none;
-          border-radius: 3px;
-          font-family: 'Quicksand-Regular', sans-serif;
-          height: 37px;
-          width: 100%;
-          //font-size: 14px;
-
-          //font-weight: normal;
-          text-decoration: none;
-          color: white;
-          background: #212121;
-          font-size: 1em;
-          cursor: pointer;
-          user-select: none;
-          appearance: none;
-          //box-shadow: 1px 1px 3px 1px  #cfcfcf, 1px 1px 3px 1px  #cfcfcf;
-          box-shadow: 0 1px 2px 1px  #cfcfcf, 0px 0px 0px 0  #cfcfcf;
-          touch-action: manipulation;
-          transition: .5s;
-          //transition: box-shadow .18s ease-out,background .18s ease-out,color .18s ease-out;
-        }
-        .btn:focus-visible {
-          box-shadow: 0 0 0 3px lightskyblue;
-        }
-        .btn:hover {
-          box-shadow: 0 5px 5px 0  #cfcfcf, 0 6px 9px 0  #cfcfcf;
-        }
-        .btn:active {
-          background-color: #efefef !important;
-        }
-        .btn:disabled {
-          background-color: #eee;
-          color: #444;
-          pointer-events: none;
-        }
-      }
-    }
 
       .NoAck {
         display: flex;
@@ -160,6 +181,7 @@
         }
       }
     }
+  }
 }
 
 
