@@ -3,7 +3,7 @@ import {
     LOGOUT_USER,
     INVALID_TOKEN,
     REGISTER_USER,
-    LOAD_USER
+    LOAD_USER, AUTH_ERROR
 } from "./types";
 
 
@@ -36,6 +36,17 @@ export const authReducer = (state = initialState, action) => {
                 ...state,
                 userLoad: true,
                 userLoading: false,
+            }
+        }
+        case AUTH_ERROR:
+        {
+            return {
+                ...state,
+                isAuthenticated: null,
+                userLoading: null,
+                userLoad: null,
+                somethink: null,
+                token: null
             }
         }
         default:
