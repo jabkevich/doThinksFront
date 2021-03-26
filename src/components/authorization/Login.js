@@ -21,7 +21,7 @@ class Login extends Component {
         this.state.password = value
     }
 
-    handleSubmit = e => {
+    onSubmit  = e => {
         e.preventDefault();
         this.props.login(this.state.username, this.state.password)
     };
@@ -29,6 +29,10 @@ class Login extends Component {
     render() {
         if (this.props.userLoading) {
             return <Redirect to='/'/>
+        }
+        if(this.props.msg){
+            console.log("this.props.msg")
+            console.log(this.props.msg)
         }
         return (
             <Fragment>
@@ -52,7 +56,7 @@ class Login extends Component {
                             <div className={styles.logIN}>
                                 Log in
                             </div>
-                            <form className={styles.Form} onSubmit={this.handleSubmit}>
+                            <form className={styles.Form} onSubmit={this.onSubmit }>
                                 <Input text={"Your login"} marginTo={"0px"} updateData={this.updateUsername} type={"text"}/>
                                 <Input text={"Your password"} marginTo={"30px"} updateData={this.updatePassword} type={"password"}/>
                                 <div className={styles.Remember}>
@@ -86,7 +90,8 @@ class Login extends Component {
 }
 const mapStateToProps = state =>{
     return{
-        userLoading: state.auth.userLoading
+        userLoading: state.auth.userLoading,
+        msg: state.errorsReducer.msg
     }
 }
 

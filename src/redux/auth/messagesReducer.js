@@ -1,16 +1,19 @@
-import {GET_ERROR} from "./types"
+import {GET_ERRORS} from "./types"
 
 
 const initialState = {
     msg: {},
-    status: null,
 };
 
 
 export const errorsReducer = (state = initialState, action) => {
+
     switch (action.type) {
-        case GET_ERROR: {
-            return (state = action.payload)
+
+        case GET_ERRORS: {
+            return {
+                msg: action.payload,
+            }
         }
         default:
             return state

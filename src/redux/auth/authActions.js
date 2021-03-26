@@ -27,19 +27,10 @@ export const login = (username, password) => dispatch => {
             payload: res.data
         })
     }).catch(err => {
-        //returnErrors(err.response.data, err.response.status)
-            dispatch(
-                {
-                    type: GET_ERRORS,
-                    payload: err.response.data
-                }
-            );
-
+        dispatch(returnErrors(err.response.data))
         dispatch({
             type: AUTH_ERROR,
         });
-
-
     })
 }
 
