@@ -38,7 +38,8 @@ class Input extends Component {
 
         return (
             <label className={styles.input} style={{marginTop: this.props.marginTo}}>
-                <input id={this.props.type} className={styles.input__field + " " + this.props.type} type={this.state.type} placeholder=" " name={"text2"} value={text2} onChange={this.onChange}/>
+                <input id={this.props.type} className={styles.input__field + " " + this.props.type} type={this.state.type} placeholder=" " name={"text2"} value={text2} onChange={this.onChange}
+                     />
                 <span className={styles.input__label} >{this.props.text}</span>
                 {
                     this.props.type === "password" ? <button type="button" className={styles.input__label2} onClick={this.handleClick}>{this.state.showWarning ?<VisibilityOffIcon style={{ fontSize: 40 }}/>:<VisibilityIcon style={{ fontSize: 40 }}/>}</button>:<Fragment/>

@@ -7,7 +7,7 @@ import NeonCheckboxStyle from "./styles/checkBox/CheckBox";
 import SwitchLen from "./styles/Lang/SwitchLen";
 import {connect} from 'react-redux'
 import PropTypes from "prop-types";
-import {login} from '../../redux/auth/authActions'
+import {login, registerEnd} from '../../redux/auth/authActions'
 
 class Login extends Component {
     state = {
@@ -25,6 +25,9 @@ class Login extends Component {
         e.preventDefault();
         this.props.login(this.state.username, this.state.password)
     };
+    componentDidMount() {
+        this.props.registerEnd()
+    }
 
     render() {
         if (this.props.userLoading) {
@@ -56,9 +59,9 @@ class Login extends Component {
                             <div className={styles.logIN}>
                                 Log in
                             </div>
-                            <form className={styles.Form} onSubmit={this.onSubmit }>
-                                <Input text={"Your login"} marginTo={"0px"} updateData={this.updateUsername} type={"text"}/>
-                                <Input text={"Your password"} marginTo={"30px"} updateData={this.updatePassword} type={"password"}/>
+                            <form className={styles.Form} onSubmit={this.onSubmit } autoComplete="off">
+                                <Input text={"Your login"} marginTo={"0px"} updateData={this.updateUsername} type={"text"} autoComplete="off"/>
+                                <Input text={"Your password"} marginTo={"30px"} updateData={this.updatePassword} type={"password"} autoComplete="off"/>
                                 <div className={styles.Remember}>
                                     <div className={remember.RememberMe}>
                                         <NeonCheckboxStyle/>
@@ -95,4 +98,4 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps, {login})(Login)
+export default connect(mapStateToProps, {login, registerEnd})(Login)

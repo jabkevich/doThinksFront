@@ -1,24 +1,26 @@
 import styles from "./styles/styles.scss"
 import React, {Component, Fragment} from 'react';
 import {Link, Redirect, Route} from "react-router-dom";
-import UserMenu from "./UserMenu"
-
+import UserMenu from "./UserMenu/UserMenu"
+import Other from "./Other/Other"
+import Tasks from "./Tasks/Tasks"
+import {connect} from "react-redux"
+import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 class Home extends Component {
     render() {
+        if(!this.props.userLoad){
+            return <Redirect to={"/"}/>
+        }
         return (
             <Fragment>
                 <div className={styles.HOME}>
                     <div className={styles.Menu}>
-                        <div className={styles.User}>
                             <UserMenu/>
-                        </div>
                         <div className={styles.Other}>
-                            Other
+                            <Other/>
                         </div>
-                        <div className={styles.Tasks}>
-                            Tasks
-                        </div>
+                        <Tasks/>
                     </div>
                     <div className={styles.MainScreen}>
                         MainScreen
@@ -29,5 +31,9 @@ class Home extends Component {
     }
 }
 
-
-export default Home
+mapStateToProps=state=>{
+    return{
+        userLoad: state.auth.userLoad
+    }
+}
+export default connect(mapStateToProps, null)(Home)

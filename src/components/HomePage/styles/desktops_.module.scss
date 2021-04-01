@@ -14,19 +14,19 @@
   }
   .Menu {
     width: 25%;
+    max-width: 250px;
     display: flex;
     flex-direction: column;
-
-    .User {
-
-    }
+    padding: 5px;
 
     .Other {
+      margin: 20px 5px 5px 5px;
+      border-radius:5px;
 
     }
-
     .Tasks {
-
+      margin: 20px 5px 5px 5px;
+      overflow: auto;
     }
   }
   .MainScreen{

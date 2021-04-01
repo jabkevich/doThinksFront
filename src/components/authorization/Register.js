@@ -22,18 +22,28 @@ class Register extends Component {
         this.state.password = value
     }
     updateRepeatPassword = (value) => {
-        this.state.password = value
+        this.state.repeatPassword = value
     }
 
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.register(this.state.username, this.state.password)
+        console.log(this.state.password)
+        console.log(this.state.repeatPassword)
+        if(this.state.password===this.state.repeatPassword){
+            this.props.register(this.state.username, this.state.password)
+        }else{
+            alert("Пароли не совпадают")
+        }
+
     };
 
     render() {
-        if (this.props.userLoading) {
-            return <Redirect to='/'/>
+        if (this.props.registerIs) {
+            return <Redirect to='/login'/>
+        }
+        if(this.props.msg.length!==0){
+            alert(this.props.msg.username)
         }
         return (
             <Fragment>
@@ -57,10 +67,10 @@ class Register extends Component {
                             <div className={styles.logIN}>
                                 Sign up
                             </div>
-                            <form className={styles.Form} onSubmit={this.handleSubmit}>
+                            <form className={styles.Form} onSubmit={this.handleSubmit} >
                                 <Input text={"Your login"} marginTo={"0px"} updateData={this.updateUsername} type={"text"}/>
                                 <Input text={"Create a password"} marginTo={"30px"} updateData={this.updatePassword} type={"password"}/>
-                                <Input text={"Repeat a password"} marginTo={"30px"} updateData={this.updatePassword} type={"password"}/>
+                                <Input text={"Repeat a password"} marginTo={"30px"} updateData={this.updateRepeatPassword} type={"password"}/>
                                 <div className={styles.Remember}>
                                     <div className={remember.RememberMe}>
                                         <NeonCheckboxStyle/>
@@ -91,7 +101,8 @@ class Register extends Component {
 
 const mapStateToProps = state =>{
     return{
-        userLoading: state.auth.userLoading
+        registerIs: state.auth.registerIs,
+        msg: state.errorsReducer.msg
     }
 }
 

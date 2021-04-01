@@ -43,6 +43,7 @@
     transition: transform 120ms ease-in;
     font-family: 'Quicksand-Regular', sans-serif;
     line-height: 1.2;
+    width: 300px;
   }
   &__label2 {
     position: absolute;
@@ -68,7 +69,8 @@
     width: 100%;
     border: 3px solid transparent;
     //padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
-    padding-top: 15px;
+    margin-top: 15px;
+    margin-left: 10px;
     color: currentColor;
     background: transparent;
     border-radius: var(--size-radius);
@@ -76,7 +78,7 @@
     &:focus,
     &:not(:placeholder-shown) {
       & + .input__label {
-
+        width: auto;
         box-shadow: inset 0px 2px 2px 0px  #cfcfcf, inset 0px 0px 0px 0px #cfcfcf;
         border-radius: var(--size-radius);
         padding: calc(var(--size-bezel) * 0.1) calc(var(--size-bezel) * .5);

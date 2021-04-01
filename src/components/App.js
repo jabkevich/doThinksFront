@@ -4,12 +4,12 @@ import PrivateRoute from "./common/PrivateRoute";
 import Login from "./authorization/Login";
 import Register from "./authorization/Register";
 import Home from "./HomePage/HomePage";
-
+import history from './history'
 class App extends Component {
 
     render() {
         return (
-            <Router>
+            <Router history={history}>
                         <Switch>
                             <PrivateRoute exact path={"/"}/>
                             <Route exact path={"/login"} component={Login}/>

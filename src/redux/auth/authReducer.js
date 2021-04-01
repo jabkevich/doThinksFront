@@ -3,7 +3,7 @@ import {
     LOGOUT_USER,
     INVALID_TOKEN,
     REGISTER_USER,
-    LOAD_USER, AUTH_ERROR
+    LOAD_USER, AUTH_ERROR,REGISTER_END
 } from "./types";
 
 
@@ -12,7 +12,9 @@ const initialState = {
     isAuthenticated: null,
     userLoading: null,
     userLoad: null,
-    somethink: null
+    registerIs: null,
+    user: null,
+    isRegister: null
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -28,7 +30,13 @@ export const authReducer = (state = initialState, action) => {
         case REGISTER_USER: {
             return {
                 ...state,
-                somethink: action.payload,
+                registerIs: true,
+            }
+        }
+        case REGISTER_END: {
+            return {
+                ...state,
+                registerIs: false,
             }
         }
         case LOAD_USER: {
@@ -36,8 +44,10 @@ export const authReducer = (state = initialState, action) => {
                 ...state,
                 userLoad: true,
                 userLoading: false,
+                user: action.payload
             }
         }
+        case LOGOUT_USER:
         case AUTH_ERROR:
         {
             return {
@@ -46,7 +56,9 @@ export const authReducer = (state = initialState, action) => {
                 userLoading: null,
                 userLoad: null,
                 somethink: null,
-                token: null
+                token: null,
+                user: null,
+                registerIs: null
             }
         }
         default:

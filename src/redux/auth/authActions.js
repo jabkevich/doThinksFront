@@ -4,7 +4,7 @@ import {
     INVALID_TOKEN,
     REGISTER_USER,
     LOAD_USER,
-    AUTH_ERROR, GET_ERRORS,
+    AUTH_ERROR, GET_ERRORS,REGISTER_END
 } from "./types";
 import axios from "axios";
 import {returnErrors} from "./messagesActions";
@@ -48,10 +48,17 @@ export const register = (username, password) => dispatch => {
             type: REGISTER_USER,
             payload: res.data
         })
-    }).catch(err => console.log(err))
+    }).catch(err => {
+        dispatch(returnErrors(err.response.data))
+    })
 
 }
+export const registerEnd = () => dispatch =>{
+    dispatch({
+        type: REGISTER_END,
+    })
 
+}
 export const tokenConfig = getState => {
     const token = getState().auth.token;
     const config = {
@@ -72,4 +79,17 @@ export const loadUser = () => (dispatch, getState) =>{
             payload: res.data
         })
     }).catch(err => console.log(err))
+}
+
+
+export const logout = () => (dispatch, getState) => {
+    axios.post(URL + '/auth/token/logout/', null, tokenConfig(getState)).then(res => {
+        dispatch({
+            type: LOGOUT_USER,
+        })
+    }).catch(err => {
+        dispatch({
+            type: INVALID_TOKEN,
+        })
+    })
 }
