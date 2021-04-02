@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import {Route, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {loadUser} from '../../redux/auth/authActions'
-import {getTasks} from '../../redux/task/tasksActions'
+import {getTasks, clearData} from '../../redux/task/tasksActions'
 const PrivateRoute = (auth) => (
     <Route
         render={props => {
             if(!auth.isAuthenticated && !auth.userLoading){
+                auth.clearData();
                 return <Redirect to={"./login"}/>
             }else if ((auth.isAuthenticated || auth.userLoading) && !auth.userLoad){
                 auth.loadUser();
@@ -33,4 +34,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {loadUser, getTasks})(PrivateRoute)
+export default connect(mapStateToProps, {loadUser, getTasks, clearData})(PrivateRoute)

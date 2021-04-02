@@ -47,6 +47,7 @@ export const authReducer = (state = initialState, action) => {
                 user: action.payload
             }
         }
+        case INVALID_TOKEN:
         case LOGOUT_USER:
         case AUTH_ERROR:
         {

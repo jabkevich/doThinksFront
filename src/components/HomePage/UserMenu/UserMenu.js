@@ -24,7 +24,6 @@ function  UserMenu (props){
     };
 
     const logout =()=>{
-        console.log(props.user)
         props.logout()
     }
 

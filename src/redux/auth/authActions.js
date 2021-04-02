@@ -6,6 +6,7 @@ import {
     LOAD_USER,
     AUTH_ERROR, GET_ERRORS,REGISTER_END
 } from "./types";
+import {CLEAR_DATA} from "../task/types"
 import axios from "axios";
 import {returnErrors} from "./messagesActions";
 
@@ -83,6 +84,7 @@ export const loadUser = () => (dispatch, getState) =>{
 
 
 export const logout = () => (dispatch, getState) => {
+
     axios.post(URL + '/auth/token/logout/', null, tokenConfig(getState)).then(res => {
         dispatch({
             type: LOGOUT_USER,
@@ -92,4 +94,5 @@ export const logout = () => (dispatch, getState) => {
             type: INVALID_TOKEN,
         })
     })
+
 }
