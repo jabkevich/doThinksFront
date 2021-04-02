@@ -5,6 +5,8 @@
 }
 .Hidden{
   //visibility: hidden;
+
+
 }
 .TaskForm{
 
@@ -17,11 +19,26 @@
 
 .Task{
   display: flex;
-  justify-content: space-around;
+  justify-content:space-between;
   align-items: center;
   margin: 10px 0 10px 0 ;
+  cursor: pointer;
+
 }
 
+.Text{
+  white-space: nowrap; /* Запрещаем перенос строк */
+  overflow: hidden; /* Обрезаем все, что не помещается в область */
+  padding: 5px; /* Поля вокруг текста */
+  text-overflow: ellipsis;
+  border: #17a2b8 solid 1px;
+  border-radius: 5px;
+  transition: .2s;
+  width: 100%;
+}
+.Text:hover{
+  background: #17a2b8;
+}
 ::-webkit-scrollbar-button {
   background-repeat:no-repeat;
   width:6px;

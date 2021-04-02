@@ -5,15 +5,13 @@ import {
     ADD_TASK,
     UPDATE_TASK,
     LOAD_TASKS,
-    LOAD_TASK, OPEN_TASK
+    TASK_LOADED, OPEN_TASK, SWAP_TASKS, LOADING_TASK
 } from "./types";
 import axios from "axios";
 const URL = "http://127.0.0.1:8000"
 
 export const getTasks = () => (dispatch, getState) => {
     const user = getState().auth.user;
-    console.log(user)
-
     axios.get(URL + `/api/group/?owner=${user["id"]}`)
         .then(res => {
             dispatch({
@@ -22,7 +20,6 @@ export const getTasks = () => (dispatch, getState) => {
             })
         }).catch(err => (console.log(err)));
 }
-
 export const delTask= (id) => (dispatch) =>{
     axios.delete(`http://127.0.0.1:8000/api/group/${id}`)
         .then(res => {
@@ -34,8 +31,6 @@ export const delTask= (id) => (dispatch) =>{
 }
 
 export const addTask =  (title, owner) => (dispatch)  =>{
-    console.log(title)
-    console.log(owner)
     axios.post(`${URL}/api/group/`, {title: title["taskName"], owner: owner})
         .then(res => {
             dispatch({
@@ -54,4 +49,30 @@ export const openTask = (id) => (dispatch) =>{
 
             })
         }).catch(err => console.log(err))
+}
+export const swapTasks = (oldIndex, newIndex, taskss) => (dispatch) => {
+    let  value = {
+        "id": taskss[oldIndex].id,
+        "task": taskss[oldIndex].task,
+        "title": taskss[oldIndex].title,
+        "priority": newIndex,
+        "owner": taskss[oldIndex].owner
+    }
+    console.log(value)
+    axios.put(URL + `/api/group/${taskss[oldIndex].id}/`, value).then(res => {
+
+        }
+    ).catch(err => console.log(err))
+    value = {
+        "id": taskss[newIndex].id,
+        "task": taskss[newIndex].task,
+        "title": taskss[newIndex].title,
+        "priority": oldIndex,
+        "owner": taskss[newIndex].owner
+    }
+    axios.put(URL + `/api/group/${taskss[newIndex].id}/`, value).catch(err => console.log(err))
+    dispatch({
+        type: SWAP_TASKS,
+        payload: {oldIndex, newIndex}
+    })
 }

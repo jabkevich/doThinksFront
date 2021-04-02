@@ -3,10 +3,9 @@ import React, {Component, Fragment} from 'react';
 import {Link, Redirect, Route} from "react-router-dom";
 import UserMenu from "./UserMenu/UserMenu"
 import Other from "./Other/Other"
-import Tasks from "./Tasks/Tasks"
+import Tasks from "./UserMenu/Tasks/Tasks"
 import {connect} from "react-redux"
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
-
+import MainScrin from "./MainScrin/MainScrin";
 class Home extends Component {
     render() {
         if(!this.props.userLoad){
@@ -22,16 +21,14 @@ class Home extends Component {
                         </div>
                         <Tasks/>
                     </div>
-                    <div className={styles.MainScreen}>
-                        MainScreen
-                    </div>
+                    <MainScrin/>
                 </div>
             </Fragment>
         )
     }
 }
 
-mapStateToProps=state=>{
+const mapStateToProps=state=>{
     return{
         userLoad: state.auth.userLoad
     }

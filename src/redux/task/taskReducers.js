@@ -5,12 +5,16 @@ import {
     ADD_TASK,
     UPDATE_TASK,
     LOAD_TASKS,
-    LOAD_TASK, OPEN_TASK
+    TASK_LOADED,
+    LOADING_TASK,
+    OPEN_TASK,
+    SWAP_TASKS
 } from "./types";
-
+import arrayMove from 'array-move';
 const initialState = {
     tasks: null,
-    miniTasks: null
+    miniTasks: null,
+    taskLoaded: false
 }
 
 export const taskReducer = (state = initialState, action) => {
@@ -19,6 +23,7 @@ export const taskReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: action.payload,
+                taskLoaded: true,
             }
         }
         case DEL_TASK: {
@@ -43,7 +48,13 @@ export const taskReducer = (state = initialState, action) => {
         case OPEN_TASK: {
             return {
                 ...state,
-               miniTask: action.payload
+               miniTasks: action.payload
+            }
+        }
+        case SWAP_TASKS: {
+            return {
+                ...state,
+               tasks:arrayMove(state.tasks, action.payload.oldIndex, action.payload.newIndex)
             }
         }
         default:
